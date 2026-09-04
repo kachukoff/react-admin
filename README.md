@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+Создание проеккта:
+npx create-react-app <react-admin>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+npm i @mui/material @emotion/react @emotion/styled @mui/x-data-grid @mui/icons-material react-router-dov@6 react-pro-sidebar formik yup @fullcalendar/core @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/list @nivo/core @nivo/pie @nivo/line @nivo/bar @nivo/geo
 
-In the project directory, you can run:
+5 логических групп:
 
-### `npm start`
+1. Внешний вид и дизайн (Material UI)@mui/material — одна из самых популярных библиотек готовых компонентов (кнопки, модальные окна, инпуты, переключатели) в стиле Google Material Design.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+@emotion/react и @emotion/styled — «движки» стилизации, на которых работает Material UI. Они позволяют писать CSS прямо внутри JavaScript-кода.
+@mui/icons-material — огромная база официальных иконок от Google (поиск, настройки, пользователь, стрелочки и т.д.).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+2. Сложные интерфейсные элементы дашборда
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+@mui/x-data-grid — продвинутая динамическая таблица. Умеет из коробки сортировать данные, фильтровать, разбивать на страницы (пагинация) и редактировать строки.
+react-pro-sidebar — готовый адаптивный компонент для красивого бокового меню (сайбара), которое можно сворачивать и разворачивать.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Интерактивные графики и визуализация данных (Nivo)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Все пакеты с приставкой @nivo/ — это мощнейшая библиотека для построения графиков и аналитики:
+@nivo/core — основная база для работы графиков.
+@nivo/pie — круговые диаграммы («пироги»).
+@nivo/line — линейные графики (например, для отображения динамики продаж или посещаемости).
+@nivo/bar — столбчатые диаграммы (гистограммы).
+@nivo/geo — интерактивные географические карты (например, чтобы показать, из каких стран ваши пользователи).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+4. Календари и расписания (FullCalendar)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Пакеты с приставкой @fullcalendar/ создают полноценный аналог Google Календаря:
+@fullcalendar/core — ядро календаря.
+@fullcalendar/daygrid — сетка по месяцам и неделям.
+@fullcalendar/timegrid — сетка по часам внутри дня (для расписания встреч).
+@fullcalendar/list — отображение событий в виде простого списка дел.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Логика: Навигация, Формы и Валидация 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+react-router-dom@6 — главная библиотека для создания многостраничности в React (роутинг). Она позволяет переключаться между вкладками «Главная», «Аналитика», «Пользователи» без перезагрузки браузера 
+formik — библиотека для удобного управления формами (регистрация, добавление товара, редактирование профиля). Защищает от написания лишнего кода (boilerplate).
+yup — валидатор данных. Работает в паре с Formik и проверяет, правильно ли пользователь заполнил поля (например, «длина пароля не менее 8 знаков», «введен корректный email»).
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
