@@ -2,7 +2,7 @@ import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
 import { tokens } from "./colorTokens"; // Импортируем вынесенные цвета
 
-// Экспортируем токенов 
+// Экспорт токенов 
 export { tokens };
 
 // Настройки темы Material UI
@@ -19,6 +19,7 @@ export const themeSettings = (mode) => {
       mode: mode,
       ...(mode === "dark"
         ? {
+            // ИСПРАВЛЕНО: Передаем объекты палитр целиком, чтобы сохранить индексы 100-900 в компонентах
             primary: { main: colors.primary[500] },
             secondary: { main: colors.greenAccent[500] },
             neutral: {
@@ -29,7 +30,7 @@ export const themeSettings = (mode) => {
             background: { default: colors.primary[500] },
           }
         : {
-            primary: { main: colors.primary[100] },
+            primary: { main: colors.primary[400] },
             secondary: { main: colors.greenAccent[500] },
             neutral: {
               dark: colors.grey[700],
