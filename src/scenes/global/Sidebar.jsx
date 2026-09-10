@@ -4,6 +4,7 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
+// Импорты иконок
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -17,13 +18,17 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
+
 const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[100] }}
+      style={{ 
+        color: colors.grey[100],
+      }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
@@ -46,14 +51,18 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        display: "flex",
+        height: "100vh",
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
+          height: "100%",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
           padding: "5px 15px 5px 20px !important",
+          color: `${colors.grey[100]} !important`,
         },
         "& .pro-inner-item:hover": {
           color: `${colors.blueAccent[600]} !important`,
@@ -61,29 +70,17 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: `${colors.blueAccent[500]} !important`,
         },
-
-        "& .pro-menu-item > .pro-inner-item > .pro-item-content": {
-          overflow: "visible !important",
-          textOverflow: "clip !important",
-          whiteSpace: "normal !important",
-          display: "flex !important",
-          alignItems: "center",
-          width: "100%",
-        },
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
+          {/* Кнопка сворачивания */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            sx={{
+            style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
-              padding: 0,
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
             }}
           >
             {!isCollapsed && (
@@ -101,54 +98,44 @@ const Sidebar = () => {
                 </Typography>
                 <IconButton
                   onClick={() => setIsCollapsed(!isCollapsed)}
-                  sx={{
-                    padding: "8px",
-                    minWidth: "auto",
-                    minHeight: "auto",
-                    "&:hover": {
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                    },
-                  }}
+                  sx={{ color: colors.grey[100] }}
                 >
-                  <MenuOutlinedIcon sx={{ fontSize: "20px" }} />
+                  <MenuOutlinedIcon />
                 </IconButton>
               </Box>
             )}
           </MenuItem>
 
+          {/* Профиль */}
           {!isCollapsed && (
-            <Box sx={{
-              mb: "30px",
-              display: "flex", flexDirection: "column", alignItems: "center"
-            }}>
+            <Box
+              sx={{
+                mb: "30px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <img
                 alt="profile-user"
                 width="100px"
                 height="100px"
-                src={`../../assets/user.png`}
+                src="../../assets/user.png"
                 style={{ cursor: "pointer", borderRadius: "50%" }}
               />
-              <Box sx={{ mt: "10px", textAlign: "center", width: "100%" }}>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    color: colors.grey[100],
-                    fontWeight: "bold",
-                  }}
-                >
+              <Box sx={{ mt: "10px", textAlign: "center" }}>
+                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
                   Ed Roh
                 </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{ color: colors.greenAccent[500] }}
-                >
+                <Typography variant="h5" color={colors.greenAccent[500]}>
                   VP Fancy Admin
                 </Typography>
               </Box>
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          {/* Пункты меню */}
+          <Box>
             <Item
               title="Dashboard"
               to="/"
@@ -158,11 +145,21 @@ const Sidebar = () => {
               isCollapsed={isCollapsed}
             />
             {!isCollapsed && (
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
-              Data
-            </Typography>
+              <Typography
+                variant="h6"
+                color={colors.grey[300]}
+                sx={{ m: "15px 0 5px 20px" }}
+              >
+                Data
+              </Typography>
             )}
-            <Item title="Manage Team" to="/team" icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} isCollapsed={isCollapsed}
+            <Item
+              title="Manage Team"
+              to="/team"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title="Contacts Information"
@@ -181,13 +178,13 @@ const Sidebar = () => {
               isCollapsed={isCollapsed}
             />
             {!isCollapsed && (
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
+              <Typography
+                variant="h6"
+                color={colors.grey[300]}
+                sx={{ m: "15px 0 5px 20px" }}
+              >
+                Pages
+              </Typography>
             )}
             <Item
               title="Profile Form"
@@ -214,13 +211,13 @@ const Sidebar = () => {
               isCollapsed={isCollapsed}
             />
             {!isCollapsed && (
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Charts
-            </Typography>
+              <Typography
+                variant="h6"
+                color={colors.grey[300]}
+                sx={{ m: "15px 0 5px 20px" }}
+              >
+                Charts
+              </Typography>
             )}
             <Item
               title="Bar Chart"
