@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
-import { DataGrid, GridToolbar, gridClasses } from "@mui/x-data-grid"; // ✅ Добавили gridClasses
+import { Box, useTheme } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
 
 const Contacts = () => {
   const theme = useTheme();
@@ -11,7 +10,10 @@ const Contacts = () => {
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+    { field: "registrarId", 
+      headerName: "Registrar ID",
+      flex: 0.7,
+      minWidth: 130 },
     {
       field: "name",
       headerName: "Name",
@@ -38,7 +40,7 @@ const Contacts = () => {
     {
       field: "address",
       headerName: "Address",
-      flex: 1,
+      flex: 1.5,
     },
     {
       field: "city",
@@ -67,12 +69,6 @@ const Contacts = () => {
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
-          },
-          [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {
-            outline: "none !important",
-          },
-          [`& .${gridClasses.columnHeader}:focus, & .${gridClasses.columnHeader}:focus-within`]: {
-            outline: "none !important",
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],

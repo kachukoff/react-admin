@@ -38,3 +38,21 @@ body,
 ::-webkit-scrollbar-track:hover {
   background: #555;
 }
+
+/* ============================================
+   Глобальные стили для MUI DataGrid
+   ============================================ */
+
+/* Убираем чёрную рамку фокуса у ячеек */
+.MuiDataGrid-root .MuiDataGrid-cell:focus,
+.MuiDataGrid-root .MuiDataGrid-cell:focus-within,
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus,
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within {
+  outline: none !important;
+}
+
+/* Убираем рамку у виртуального скроллера */
+.MuiDataGrid-root .MuiDataGrid-virtualScroller:focus,
+.MuiDataGrid-root .MuiDataGrid-virtualScroller:focus-within {
+  outline: none !important;
+}

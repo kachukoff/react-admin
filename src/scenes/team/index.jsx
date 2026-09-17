@@ -13,50 +13,50 @@ const Team = () => {
 
   const columns = [
     { field: "id", headerName: "ID" },
-    { 
-      field: "name", 
-      headerName: "Name", 
-      flex: 1, 
-      cellClassName: "name-column--cell" 
+    {
+      field: "name",
+      headerName: "Name",
+      flex: 1,
+      cellClassName: "name-column--cell",
     },
-    { 
-      field: "age", 
-      headerName: "Age", 
+    {
+      field: "age",
+      headerName: "Age",
       type: "number",
-      headerAlign: "left", 
-      align: "left", 
+      headerAlign: "left",
+      align: "left",
     },
-    { 
-      field: "phone", 
+    {
+      field: "phone",
       headerName: "Phone Number",
-      flex: 1,  
+      flex: 1,
     },
-    { 
-      field: "email", 
+    {
+      field: "email",
       headerName: "Email",
-      flex: 1,  
+      flex: 1,
     },
-    { 
-      field: "access", 
+    {
+      field: "access",
       headerName: "Access Level",
       flex: 1,
       headerAlign: "left",
       renderCell: ({ row: { access } }) => {
         const accessConfig = {
-          admin: { 
-            bg: colors.greenAccent[600], 
-            icon: <AdminPanelSettingsOutlinedIcon />, 
-            label: "Admin" 
+          admin: {
+            bg: colors.greenAccent[600],
+            icon: <AdminPanelSettingsOutlinedIcon />,
+            label: "Admin",
           },
-          manager: { 
-            bg: colors.greenAccent[700], 
-            icon: <SecurityOutlinedIcon />, 
-            label: "Manager" 
+          manager: {
+            bg: colors.greenAccent[700],
+            icon: <SecurityOutlinedIcon />,
+            label: "Manager",
           },
-          user: { 
-            bg: colors.greenAccent[700], 
-            icon: <LockOpenOutlinedIcon />, 
-            label: "User" 
+          user: {
+            bg: colors.greenAccent[700],
+            icon: <LockOpenOutlinedIcon />,
+            label: "User",
           },
         };
 
@@ -79,7 +79,7 @@ const Team = () => {
             </Typography>
           </Box>
         );
-      }  
+      },
     },
   ];
 
@@ -90,20 +90,14 @@ const Team = () => {
         m="40px 0 0 0"
         height="75vh"
         sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
+          "& .MuiDataGrid-root": { border: "none" },
+          "& .MuiDataGrid-cell": { borderBottom: "none" },
+          "& .name-column--cell": { color: colors.greenAccent[300] },
           "& .MuiDataGrid-cell:focus, & .MuiDataGrid-cell:focus-within": {
             outline: "none !important",
           },
           "& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within": {
             outline: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],

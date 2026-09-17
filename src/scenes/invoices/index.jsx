@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid"; // ✅ убрали gridClasses
 import { tokens } from "../../theme";
 import { mockDataInvoices } from "../../data/mockData";
 import Header from "../../components/Header";
@@ -34,7 +34,7 @@ const Invoices = () => {
         <Typography color={colors.greenAccent[500]}>
           ${params.row.cost}
         </Typography>
-      )
+      ),
     },
     {
       field: "date",
@@ -45,10 +45,7 @@ const Invoices = () => {
 
   return (
     <Box m="20px">
-      <Header
-        title="INVOICES"
-        subtitle="List of Invoices Balances"
-      />
+      <Header title="INVOICES" subtitle="List of Invoices Balances" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -58,12 +55,6 @@ const Invoices = () => {
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
-          },
-          [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {
-            outline: "none !important",
-          },
-          [`& .${gridClasses.columnHeader}:focus, & .${gridClasses.columnHeader}:focus-within`]: {
-            outline: "none !important",
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],
