@@ -53,12 +53,14 @@ yup — валидатор данных. Работает в паре с Formik 
     Formik + Yup (формы и валидация)
     react-pro-sidebar 0.7.1 (сайдбар)
 
-🔧 Что мы решали по ходу:
-    За время работы мы столкнулись с рядом проблем и решили их:
-    Миграция с Webpack на Vite — переписали конфиг, скрипты
-    React-плагин для JSX — @vitejs/plugin-react
-    Ошибки react-pro-sidebar — откат до версии 0.7.1
-    Чёрная рамка фокуса в DataGrid — вынесли фикс в index.css
-    Обрезание заголовка «Registrar ID» — добавили flex + minWidth
-    Ошибка helperText в Formik — исправили тип с boolean на строку
-    Vite 8 несовместим со старыми библиотеками — откат до Vite 6
+📋 Официальный список инструментов
+
+Create React App: https://create-react-app.dev/
+Material UI: https://mui.com/material-ui/getting-started/
+Material Icons: https://mui.com/material-ui/material-icons/
+Nivo Charts (для графиков): https://nivo.rocks/components
+FullCalendar (для календаря): https://fullcalendar.io/docs
+Formik (для форм): https://formik.org/docs/overview#installation
+Yup (для валидации): https://github.com/jquense/yup
+React Pro Sidebar: https://github.com/azouaoui-med/react-pro-sidebar
+Google Fonts: https://fonts.google.com/`

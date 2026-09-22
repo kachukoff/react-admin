@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
-import useMediaQurey from "@mui/material/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
 
@@ -30,7 +30,7 @@ const userSchema = yup.object().shape({
 });
 
 const Form = () => {
-  const isNonMobile = useMediaQurey("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
     console.log(values);
@@ -58,7 +58,7 @@ const Form = () => {
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColum: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
               <TextField

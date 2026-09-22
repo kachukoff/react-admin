@@ -9,5 +9,11 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-  }
+  },
+  optimizeDeps: {
+    exclude: ['@fullcalendar/react', '@fullcalendar/core'],
+    esbuildOptions: {
+      target: 'esnext',
+    },
+  },
 });
