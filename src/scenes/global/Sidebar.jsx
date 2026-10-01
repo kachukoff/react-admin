@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
-import "react-pro-sidebar/dist/css/styles.css";
+import { NavLink } from "react-router-dom";
+import { Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-// Импорты иконок
+
+// Импорт иконок
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -15,246 +15,155 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
+// Ссылки на компоненты иконок
+const menuData = [
+  {
+    section: "Data",
+    items: [
+      { title: "Dashboard", path: "/", icon: HomeOutlinedIcon },
+      { title: "Manage Team", path: "/team", icon: PeopleOutlinedIcon },
+      { title: "Contacts Information", path: "/contacts", icon: ContactsOutlinedIcon },
+      { title: "Invoices Balances", path: "/invoices", icon: ReceiptOutlinedIcon },
+    ],
+  },
+  {
+    section: "Pages",
+    items: [
+      { title: "Profile Form", path: "/form", icon: PersonOutlinedIcon },
+      { title: "Calendar", path: "/calendar", icon: CalendarTodayOutlinedIcon },
+      { title: "FAQ Page", path: "/faq", icon: HelpOutlineOutlinedIcon },
+    ],
+  },
+  {
+    section: "Charts",
+    items: [
+      { title: "Bar Chart", path: "/bar", icon: BarChartOutlinedIcon },
+      { title: "Pie Chart", path: "/pie", icon: PieChartOutlineOutlinedIcon },
+      { title: "Line Chart", path: "/line", icon: TimelineOutlinedIcon },
+      { title: "Geography Chart", path: "/geography", icon: MapOutlinedIcon },
+    ],
+  },
+];
 
-const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{ 
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      {!isCollapsed && (
-        <>
-          <Typography>{title}</Typography>
-          <Link to={to} />
-        </>
-      )}
-    </MenuItem>
-  );
-};
-
-const Sidebar = () => {
+const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../../assets/user.png" } }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+
+  const drawerWidth = isCollapsed ? 80 : 280;
+
+  const sidebarTransition = theme.transitions.create(["width", "opacity", "height", "transform"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  });
 
   return (
-    <Box
+    <Drawer
+      variant="permanent"
+      anchor="left"
       sx={{
-        display: "flex",
-        height: "100vh",
-        "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
-          height: "100%",
-        },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
-        "& .pro-inner-item": {
-          padding: "5px 15px 5px 20px !important",
-          color: `${colors.grey[100]} !important`,
-        },
-        "& .pro-inner-item:hover": {
-          color: `${colors.blueAccent[600]} !important`,
-        },
-        "& .pro-menu-item.active": {
-          color: `${colors.blueAccent[500]} !important`,
+        width: drawerWidth,
+        flexShrink: 0,
+        transition: sidebarTransition, 
+        "& .MuiDrawer-paper": {
+          width: drawerWidth,
+          boxSizing: "border-box",
+          backgroundColor: colors.primary[400],
+          borderRight: "none",
+          transition: sidebarTransition,
+          overflowX: "hidden",
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
-          {/* Кнопка сворачивания */}
-          <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            style={{
-              margin: "10px 0 20px 0",
-              color: colors.grey[100],
-            }}
-          >
-            {!isCollapsed && (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                  pr: "15px",
-                }}
-              >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
-                </Typography>
-                <IconButton
-                  onClick={() => setIsCollapsed(!isCollapsed)}
-                  sx={{ color: colors.grey[100] }}
-                >
-                  <MenuOutlinedIcon />
-                </IconButton>
-              </Box>
-            )}
-          </MenuItem>
+      {/* Кнопка сворачивания */}
+      <Box sx={{ display: "flex", justifyContent: isCollapsed ? "center" : "flex-end", p: 1 }}>
+        <IconButton onClick={() => setIsCollapsed(!isCollapsed)} sx={{ color: colors.grey[100] }}>
+          <MenuOutlinedIcon />
+        </IconButton>
+      </Box>
 
-          {/* Профиль */}
-          {!isCollapsed && (
-            <Box
-              sx={{
-                mb: "30px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <img
-                alt="profile-user"
-                width="100px"
-                height="100px"
-                src="../../assets/user.png"
-                style={{ cursor: "pointer", borderRadius: "50%" }}
-              />
-              <Box sx={{ mt: "10px", textAlign: "center" }}>
-                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
-                  Ed Roh
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
-                </Typography>
-              </Box>
-            </Box>
-          )}
-
-          {/* Пункты меню */}
-          <Box>
-            <Item
-              title="Dashboard"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            {!isCollapsed && (
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                Data
-              </Typography>
-            )}
-            <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            {!isCollapsed && (
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                Pages
-              </Typography>
-            )}
-            <Item
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            {!isCollapsed && (
-              <Typography
-                variant="h6"
-                color={colors.grey[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                Charts
-              </Typography>
-            )}
-            <Item
-              title="Bar Chart"
-              to="/bar"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Pie Chart"
-              to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Geography Chart"
-              to="/geography"
-              icon={<MapOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
+      {/* Профиль */}
+      {!isCollapsed && (
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 3 }}>
+          <Box
+            component="img"
+            alt="profile-user"
+            src={user.avatar}
+            sx={{ width: 100, height: 100, cursor: "pointer", borderRadius: "50%" }}
+          />
+          <Box sx={{ mt: "10px", textAlign: "center" }}>
+            <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
+              {user.name}
+            </Typography>
+            <Typography variant="h5" color={colors.greenAccent[500]}>
+              {user.role}
+            </Typography>
           </Box>
-        </Menu>
-      </ProSidebar>
-    </Box>
+        </Box>
+      )}
+
+      {/* Пункты меню */}
+      <List component="nav">
+        {menuData.map((section) => (
+          <Box key={section.section}>
+            {!isCollapsed && (
+              <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
+                {section.section}
+              </Typography>
+            )}
+            {section.items.map((item) => {
+              const ItemIcon = item.icon;
+
+              return (
+                <ListItem key={item.title} disablePadding sx={{ display: "block" }}>
+                  <ListItemButton
+                    component={NavLink}
+                    to={item.path}
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: isCollapsed ? "center" : "flex-start",
+                      px: isCollapsed ? 0 : 2.5,
+                      color: colors.grey[100],
+                      transition: "all 0.2s ease",
+                      "&.active": {
+                        color: colors.blueAccent[500],
+                        backgroundColor: `${colors.primary[500]} !important`,
+                      },
+                      "&:hover": {
+                        backgroundColor: `${colors.blueAccent[600]} !important`,
+                        color: "#ffffff",
+                      },
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: isCollapsed ? 48 : 0,
+                        mr: isCollapsed ? 0 : 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "inherit",
+                      }}
+                    >
+                      <ItemIcon />
+                    </ListItemIcon>
+
+                    {!isCollapsed && (
+                      <ListItemText
+                        primary={item.title}
+                        sx={{ opacity: isCollapsed ? 0 : 1 }}
+                      />
+                    )}
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </Box>
+        ))}
+      </List>
+    </Drawer>
   );
 };
 
