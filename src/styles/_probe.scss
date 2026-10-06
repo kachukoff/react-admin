@@ -1,0 +1,5 @@
+@use "./abstracts" as a;
+
+.probe {
+  padding: map-get(a.$space, 4); // должно дать 16px
+}

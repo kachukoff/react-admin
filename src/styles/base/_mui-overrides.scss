@@ -1,0 +1,10 @@
+.MuiDataGrid-root {
+  .MuiDataGrid-cell:focus,
+  .MuiDataGrid-cell:focus-within,
+  .MuiDataGrid-columnHeader:focus,
+  .MuiDataGrid-columnHeader:focus-within,
+  .MuiDataGrid-virtualScroller:focus,
+  .MuiDataGrid-virtualScroller:focus-within {
+    outline: none !important;
+  }
+}

@@ -1,0 +1,35 @@
+
+@use "../abstracts" as a;
+
+@mixin emit {
+  color-scheme: light;
+
+  @include a.emit-scale("grey",         a.$grey-light);
+  @include a.emit-scale("primary",      a.$primary-light);
+  @include a.emit-scale("green-accent", a.$green-light);
+  @include a.emit-scale("red-accent",   a.$red-light);
+  @include a.emit-scale("blue-accent",  a.$blue-light);
+
+  --bg-default:   #fcfcfc;
+  --bg-paper:     #ffffff;
+  --bg-elevated:  #{a.token(a.$grey-light, 200)};
+
+  --border:       #{a.token(a.$grey-light, 300)};
+  --border-soft:  #{a.token(a.$grey-light, 200)};
+
+  --text-primary:   #{a.token(a.$grey-light, 900)};
+  --text-secondary: #{a.token(a.$grey-light, 700)};
+  --text-muted:     #{a.token(a.$grey-light, 500)};
+  --text-on-accent: #ffffff;
+
+  --accent:        #{a.token(a.$green-light, 500)};
+  --accent-hover:  #{a.token(a.$green-light, 600)};
+  --accent-active: #{a.token(a.$green-light, 700)};
+
+  --error:   #{a.token(a.$red-light, 500)};
+  --warning: #d97706;
+  --info:    #{a.token(a.$blue-light, 500)};
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}

@@ -1,0 +1,19 @@
+
+.header {
+  margin-bottom: 20px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.5px;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: var(--green-accent-400);
+    margin: 0;
+  }
+}

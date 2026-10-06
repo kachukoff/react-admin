@@ -1,0 +1,23 @@
+
+.app {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  min-width: 0;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-default);
+  color: var(--text-primary);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dashboard-grid {
+  > * {
+    min-width: 0;
+  }
+}

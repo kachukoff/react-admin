@@ -1,0 +1,188 @@
+// components/_datagrid.scss
+
+.data-grid-box {
+  // ============================================
+  // Базовая структура
+  // ============================================
+  .MuiDataGrid-root {
+    border: none;
+    color: var(--text-primary);
+    background-color: transparent;
+  }
+
+  .MuiDataGrid-cell {
+    border-bottom: none;
+    color: var(--text-primary);
+  }
+
+  // Убираем чёрные рамки фокуса
+  .MuiDataGrid-cell:focus,
+  .MuiDataGrid-cell:focus-within,
+  .MuiDataGrid-columnHeader:focus,
+  .MuiDataGrid-columnHeader:focus-within {
+    outline: none !important;
+  }
+
+  // ============================================
+  // Шапка таблицы
+  // ============================================
+  .MuiDataGrid-columnHeaders {
+    background-color: var(--blue-accent-700);
+    border-bottom: none;
+    color: var(--grey-100);
+  }
+
+  .MuiDataGrid-columnHeader {
+    color: var(--grey-100);
+  }
+
+  .MuiDataGrid-columnHeaderTitle {
+    color: var(--grey-100);
+    font-weight: 600;
+  }
+
+  // Иконки сортировки и меню в хедере
+  .MuiDataGrid-columnHeader .MuiSvgIcon-root,
+  .MuiDataGrid-iconButtonContainer .MuiSvgIcon-root,
+  .MuiDataGrid-sortIcon {
+    color: var(--grey-100);
+    fill: var(--grey-100);
+  }
+
+  // Постоянно видимая иконка меню в хедере
+  .MuiDataGrid-menuIcon {
+    visibility: visible;
+    width: auto;
+  }
+
+  // ============================================
+  // Ячейки и строки
+  // ============================================
+  .name-column--cell {
+    color: var(--green-accent-300);
+  }
+
+  .MuiDataGrid-virtualScroller {
+    background-color: var(--primary-400);
+  }
+
+  .MuiDataGrid-row {
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: var(--primary-500);
+    }
+
+    &.Mui-selected {
+      background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--accent) 22%, transparent);
+      }
+    }
+  }
+
+  // ============================================
+  // Футер (пагинация)
+  // ============================================
+  .MuiDataGrid-footerContainer {
+    border-top: none;
+    background-color: var(--blue-accent-700);
+    color: var(--grey-100);
+  }
+
+  .MuiTablePagination-root {
+    color: var(--grey-100);
+  }
+
+  .MuiTablePagination-selectIcon,
+  .MuiTablePagination-actions button {
+    color: var(--grey-100);
+  }
+
+  // ============================================
+  // Чекбоксы
+  // ============================================
+  .MuiCheckbox-root {
+    color: var(--green-accent-200) !important;
+  }
+
+  // ============================================
+  // Тулбар (COLUMNS, FILTERS, DENSITY, EXPORT)
+  // ============================================
+  .MuiDataGrid-toolbarContainer {
+    color: var(--grey-100);
+
+    button {
+      color: var(--grey-100);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+
+      &:hover {
+        color: var(--green-accent-400);
+        background-color: transparent;
+      }
+
+      svg {
+        color: var(--grey-100);
+        fill: var(--grey-100);
+      }
+    }
+
+    .MuiInputBase-root {
+      color: var(--grey-100);
+
+      input {
+        color: var(--grey-100);
+      }
+
+      svg {
+        color: var(--grey-100);
+        fill: var(--grey-100);
+      }
+    }
+  }
+
+  // Старый селектор — оставим для совместимости
+  .MuiDataGrid-toolbarContainer .MuiButton-text {
+    color: var(--grey-100) !important;
+  }
+
+  // ============================================
+  // Панель фильтров/columns/density (всплывающая)
+  // ============================================
+  .MuiDataGrid-panel {
+    background-color: var(--primary-400);
+    color: var(--text-primary);
+  }
+
+  .MuiDataGrid-panelHeader,
+  .MuiDataGrid-panelContent,
+  .MuiDataGrid-panelFooter {
+    background-color: var(--primary-400);
+    color: var(--text-primary);
+  }
+
+  .MuiDataGrid-panelFooter button {
+    color: var(--grey-100);
+  }
+
+  .MuiDataGrid-columnsPanel,
+  .MuiDataGrid-columnsPanelRow {
+    color: var(--text-primary);
+    background-color: var(--primary-400);
+  }
+
+  .MuiDataGrid-filterForm {
+    color: var(--text-primary);
+  }
+
+  .MuiDataGrid-filterFormDeleteIcon,
+  .MuiDataGrid-filterFormLinkOperators,
+  .MuiDataGrid-filterFormColumnInput,
+  .MuiDataGrid-filterFormOperatorInput,
+  .MuiDataGrid-filterFormValueInput {
+    color: var(--text-primary);
+  }
+}

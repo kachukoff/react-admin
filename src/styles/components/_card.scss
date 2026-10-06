@@ -1,0 +1,26 @@
+@use "../abstracts" as a;
+
+.card {
+  background: var(--primary-400);
+  border: 1px solid var(--border-soft);
+  border-radius: a.$radius-lg;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow a.$transition, transform a.$transition;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  &__body {
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+}

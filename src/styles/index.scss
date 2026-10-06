@@ -1,0 +1,13 @@
+
+@use "./abstracts" as a;
+@use "./themes";
+@use "./base";
+@use "./components";
+@use "./utilities";
+
+:root {
+  --radius-sm: #{a.$radius-sm};
+  --radius-md: #{a.$radius-md};
+  --radius-lg: #{a.$radius-lg};
+  --transition: #{a.$transition};
+}

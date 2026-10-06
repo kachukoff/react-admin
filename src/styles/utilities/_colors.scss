@@ -1,0 +1,18 @@
+@each $scale in ("grey", "primary", "green-accent", "red-accent", "blue-accent") {
+  @each $shade in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
+    .bg-#{$scale}-#{$shade}     { background-color: var(--#{$scale}-#{$shade}); }
+    .text-#{$scale}-#{$shade}   { color:            var(--#{$scale}-#{$shade}); }
+    .border-#{$scale}-#{$shade} { border-color:     var(--#{$scale}-#{$shade}); }
+  }
+}
+
+.bg-default     { background: var(--bg-default); }
+.bg-paper       { background: var(--bg-paper); }
+.bg-elevated    { background: var(--bg-elevated); }
+
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+
+.border-default { border-color: var(--border); }
+.border-soft    { border-color: var(--border-soft); }

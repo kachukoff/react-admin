@@ -1,0 +1,42 @@
+@use "../abstracts" as a;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    background: var(--primary-400);
+    border-radius: 4px;
+    min-width: 280px;
+    padding: 4px 8px;
+
+    input {
+      color: var(--text-primary);
+      padding: 4px 8px;
+
+      &::placeholder {
+        color: var(--text-muted);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .MuiIconButton-root {
+      color: var(--text-primary);
+      transition: color a.$transition, background a.$transition;
+
+      &:hover {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+      }
+    }
+  }
+}

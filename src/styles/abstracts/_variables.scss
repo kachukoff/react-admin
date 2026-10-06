@@ -1,0 +1,23 @@
+
+$font-heading: "Source Sans Pro", sans-serif;
+$font-body:    "Source Sans Pro", sans-serif;
+
+$font-sizes: (
+  h1: 40px, h2: 32px, h3: 24px, h4: 20px, h5: 16px, h6: 14px,
+  body: 12px,
+);
+
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+$space: (
+  0: 0, 1: 4px, 2: 8px, 3: 12px, 4: 16px,
+  5: 24px, 6: 32px, 7: 48px, 8: 64px,
+);
+
+$transition: 0.2s ease-in-out;
+
+$breakpoints: (
+  sm: 640px, md: 768px, lg: 1024px, xl: 1280px,
+);

@@ -1,0 +1,42 @@
+@use "../abstracts" as a;
+
+.btn,
+button.btn,
+button.MuiButton-root.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: a.$radius-md;
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: background a.$transition, color a.$transition, border-color a.$transition;
+
+  &.btn--primary,
+  &--primary {
+    background-color: var(--accent) !important;
+    background-image: none !important;
+    color: var(--text-on-accent) !important;
+    box-shadow: none !important;
+
+    &:hover {
+      background-color: var(--accent-hover) !important;
+    }
+
+    &:active {
+      background-color: var(--accent-active) !important;
+    }
+  }
+
+  &.btn--ghost,
+  &--ghost {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+
+    &:hover {
+      background-color: var(--bg-elevated) !important;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+
+.stat-box {
+  width: 100%;
+  padding: 4px 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--grey-100);
+    line-height: 1.2;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: var(--green-accent-500);
+  }
+
+  &__increase {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--green-accent-600);
+  }
+}

@@ -1,0 +1,16 @@
+
+@use "../abstracts" as a;
+
+@each $key, $size in a.$space {
+  .m-#{$key}  { margin: $size; }
+  .mt-#{$key} { margin-top: $size; }
+  .mb-#{$key} { margin-bottom: $size; }
+  .ml-#{$key} { margin-left: $size; }
+  .mr-#{$key} { margin-right: $size; }
+
+  .p-#{$key}  { padding: $size; }
+  .pt-#{$key} { padding-top: $size; }
+  .pb-#{$key} { padding-bottom: $size; }
+  .pl-#{$key} { padding-left: $size; }
+  .pr-#{$key} { padding-right: $size; }
+}

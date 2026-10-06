@@ -1,0 +1,34 @@
+@use "../abstracts" as a;
+
+@mixin emit {
+  color-scheme: dark;
+
+  @include a.emit-scale("grey",         a.$grey-dark);
+  @include a.emit-scale("primary",      a.$primary-dark);
+  @include a.emit-scale("green-accent", a.$green-dark);
+  @include a.emit-scale("red-accent",   a.$red-dark);
+  @include a.emit-scale("blue-accent",  a.$blue-dark);
+
+  --bg-default:   #{a.token(a.$primary-dark, 500)};
+  --bg-paper:     #{a.token(a.$primary-dark, 400)};
+  --bg-elevated:  #{a.token(a.$primary-dark, 600)};
+
+  --border:       #{a.token(a.$grey-dark, 700)};
+  --border-soft:  #{a.token(a.$grey-dark, 800)};
+
+  --text-primary:   #{a.token(a.$grey-dark, 100)};
+  --text-secondary: #{a.token(a.$grey-dark, 300)};
+  --text-muted:     #{a.token(a.$grey-dark, 500)};
+  --text-on-accent: #ffffff;
+
+  --accent:        #{a.token(a.$green-dark, 500)};
+  --accent-hover:  #{a.token(a.$green-dark, 400)};
+  --accent-active: #{a.token(a.$green-dark, 600)};
+
+  --error:   #{a.token(a.$red-dark, 500)};
+  --warning: #f59e0b;
+  --info:    #{a.token(a.$blue-dark, 500)};
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.5);
+}

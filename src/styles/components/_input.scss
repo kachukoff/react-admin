@@ -1,0 +1,72 @@
+@use "../abstracts" as a;
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg-paper);
+  border: 1px solid var(--border);
+  border-radius: a.$radius-md;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color a.$transition, box-shadow a.$transition;
+
+  &::placeholder { color: var(--text-muted); }
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+}
+
+// ============================================
+// MUI TextField — перебиваем JSS через !important
+// ============================================
+.MuiTextField-root {
+  .MuiInputLabel-root {
+    color: var(--grey-300) !important;
+
+    &.Mui-focused {
+      color: var(--accent) !important;
+    }
+
+    &.Mui-error {
+      color: var(--error) !important;
+    }
+  }
+
+  .MuiFilledInput-root {
+    background-color: var(--primary-600) !important;
+    color: var(--text-primary) !important;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--primary-600) !important;
+    }
+
+    &.Mui-focused {
+      background-color: var(--primary-600) !important;
+    }
+
+    &::before {
+      border-bottom-color: var(--border) !important;
+    }
+
+    &::after {
+      border-bottom-color: var(--accent) !important;
+    }
+  }
+
+  .MuiFilledInput-input {
+    color: var(--text-primary) !important;
+    padding: 16px 12px 8px;
+  }
+
+  .MuiFormHelperText-root {
+    color: var(--text-muted) !important;
+
+    &.Mui-error {
+      color: var(--error) !important;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "sass:color";
+
+@function token($scale, $shade) {
+  @return map.get($scale, $shade);
+}
+
+@function auto-contrast($c, $light: #ffffff, $dark: #141414) {
+  @if color.lightness($c) > 60% {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}

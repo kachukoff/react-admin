@@ -1,0 +1,41 @@
+
+.fc {
+  --fc-border-color: var(--border);
+  --fc-page-bg-color: var(--primary-400);
+  --fc-neutral-bg-color: var(--primary-500);
+  --fc-list-event-hover-bg-color: var(--primary-500);
+  --fc-today-bg-color: color-mix(in srgb, var(--accent) 15%, transparent);
+
+  color: var(--text-primary);
+
+  .fc-toolbar-title {
+    color: var(--grey-100);
+  }
+
+  .fc-button {
+    background-color: var(--blue-accent-600);
+    border-color: var(--blue-accent-700);
+    color: var(--grey-100);
+    text-transform: capitalize;
+
+    &:hover {
+      background-color: var(--blue-accent-500);
+      border-color: var(--blue-accent-500);
+    }
+
+    &:disabled {
+      background-color: var(--primary-600);
+      border-color: var(--primary-700);
+    }
+  }
+
+  .fc-col-header-cell,
+  .fc-daygrid-day-number,
+  .fc-timegrid-slot-label {
+    color: var(--text-primary);
+  }
+
+  .fc-daygrid-day:hover {
+    background-color: var(--primary-500);
+  }
+}

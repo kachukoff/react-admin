@@ -1,0 +1,12 @@
+
+@use "dark";
+@use "light";
+
+:root,
+[data-theme="dark"] {
+  @include dark.emit;
+}
+
+[data-theme="light"] {
+  @include light.emit;
+}
