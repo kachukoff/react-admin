@@ -1,5 +1,4 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import Header from "../../components/Header";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -13,11 +12,7 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 
-
 const Dashboard = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -27,11 +22,12 @@ const Dashboard = () => {
         <Box>
           <Button
             sx={{
-              backgroundColor: colors.blueAccent[600],
-              color: colors.grey[100],
+              backgroundColor: "var(--blue-accent-600)",
+              color: "var(--grey-100)",
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              "&:hover": { backgroundColor: "var(--blue-accent-500)" },
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -42,6 +38,7 @@ const Dashboard = () => {
 
       {/* GRID & CHARTS */}
       <Box
+        className="dashboard-grid"
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
@@ -50,7 +47,7 @@ const Dashboard = () => {
         {/* ROW 1 */}
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -62,7 +59,7 @@ const Dashboard = () => {
             increase="+14%"
             icon={
               <EmailIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: "var(--green-accent-600)", fontSize: "26px" }}
               />
             }
           />
@@ -70,7 +67,7 @@ const Dashboard = () => {
 
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -82,7 +79,7 @@ const Dashboard = () => {
             increase="+21%"
             icon={
               <PointOfSaleIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: "var(--green-accent-600)", fontSize: "26px" }}
               />
             }
           />
@@ -90,7 +87,7 @@ const Dashboard = () => {
 
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -102,7 +99,7 @@ const Dashboard = () => {
             increase="+5%"
             icon={
               <PersonAddIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: "var(--green-accent-600)", fontSize: "26px" }}
               />
             }
           />
@@ -110,7 +107,7 @@ const Dashboard = () => {
 
         <Box
           gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -122,7 +119,7 @@ const Dashboard = () => {
             increase="+43%"
             icon={
               <TrafficIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                sx={{ color: "var(--green-accent-600)", fontSize: "26px" }}
               />
             }
           />
@@ -132,8 +129,7 @@ const Dashboard = () => {
         <Box
           gridColumn="span 8"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-
+          backgroundColor="var(--primary-400)"
         >
           <Box
             mt="25px"
@@ -146,14 +142,14 @@ const Dashboard = () => {
               <Typography
                 variant="h5"
                 fontWeight="600"
-                color={colors.grey[100]}
+                sx={{ color: "var(--grey-100)" }}
               >
                 Revenue Generated
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
-                color={colors.greenAccent[500]}
+                sx={{ color: "var(--green-accent-500)" }}
               >
                 $59,342.32
               </Typography>
@@ -161,30 +157,30 @@ const Dashboard = () => {
             <Box>
               <IconButton>
                 <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                  sx={{ fontSize: "26px", color: "var(--green-accent-500)" }}
                 />
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+          <Box className="chart-box chart-box--h250 chart-box--pull-up">
             <LineChart isDashboard={true} />
           </Box>
         </Box>
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          overflow="auto"
+          backgroundColor="var(--primary-400)"
+          sx={{ overflow: "auto" }}
         >
           <Box
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            color={colors.grey[100]}
+            borderBottom="4px solid var(--primary-500)"
+            color="var(--grey-100)"
             p="15px"
           >
-            <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
+            <Typography sx={{ color: "var(--grey-100)" }} variant="h5" fontWeight="600">
               Recent Transactions
             </Typography>
           </Box>
@@ -194,24 +190,24 @@ const Dashboard = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
+              borderBottom="4px solid var(--primary-500)"
               p="15px"
             >
               <Box>
                 <Typography
-                  color={colors.greenAccent[500]}
                   variant="h5"
                   fontWeight="600"
+                  sx={{ color: "var(--green-accent-500)" }}
                 >
                   {transaction.txId}
                 </Typography>
-                <Typography color={colors.grey[100]}>
+                <Typography sx={{ color: "var(--grey-100)" }}>
                   {transaction.user}
                 </Typography>
               </Box>
-              <Box color={colors.grey[100]}>{transaction.date}</Box>
+              <Box sx={{ color: "var(--grey-100)" }}>{transaction.date}</Box>
               <Box
-                backgroundColor={colors.greenAccent[500]}
+                backgroundColor="var(--green-accent-500)"
                 p="5px 10px"
                 borderRadius="4px"
               >
@@ -225,10 +221,10 @@ const Dashboard = () => {
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           p="30px"
         >
-          <Typography variant="h5" fontWeight="600">
+          <Typography variant="h5" fontWeight="600" sx={{ color: "var(--grey-100)" }}>
             Campaign
           </Typography>
           <Box
@@ -240,44 +236,45 @@ const Dashboard = () => {
             <ProgressCircle size={125} />
             <Typography
               variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
+              sx={{ mt: "15px", color: "var(--green-accent-500)" }}
             >
               $48,352 revenue generated
             </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
+            <Typography sx={{ color: "var(--grey-300)" }}>
+              Includes extra misc expenditures and costs
+            </Typography>
           </Box>
         </Box>
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
         >
           <Typography
             variant="h5"
             fontWeight="600"
-            sx={{ padding: "30px 30px 0 30px" }}
+            sx={{ padding: "30px 30px 0 30px", color: "var(--grey-100)" }}
           >
             Sales Quantity
           </Typography>
-          <Box height="250px" mt="-20px">
+          <Box className="chart-box chart-box--h250 chart-box--pull-up">
             <BarChart isDashboard={true} />
           </Box>
         </Box>
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           padding="30px"
         >
           <Typography
             variant="h5"
             fontWeight="600"
-            sx={{ marginBottom: "15px" }}
+            sx={{ marginBottom: "15px", color: "var(--grey-100)" }}
           >
             Geography Based Traffic
           </Typography>
-          <Box height="200px">
+          <Box className="chart-box chart-box--h200">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>

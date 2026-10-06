@@ -4,15 +4,11 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
-import { Box, List, ListItem, ListItemText, Typography, useTheme } from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import Header from "../../components/Header";
-import { tokens } from "../../theme";
 import { formatDate } from "@fullcalendar/core";
 
-
 const Calendar = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const handleDateClick = (selected) => {
@@ -26,7 +22,7 @@ const Calendar = () => {
         title,
         start: selected.startStr,
         end: selected.endStr,
-        allDay: selected.allDay
+        allDay: selected.allDay,
       });
     }
   };
@@ -48,7 +44,7 @@ const Calendar = () => {
         {/* CALENDAR SIDEBAR */}
         <Box
           flex="1 1 20%"
-          backgroundColor={colors.primary[400]}
+          backgroundColor="var(--primary-400)"
           p="15px"
           borderRadius="4px"
         >
@@ -58,9 +54,9 @@ const Calendar = () => {
               <ListItem
                 key={event.id}
                 sx={{
-                  backgroundColor: colors.greenAccent[500],
+                  backgroundColor: "var(--green-accent-500)",
                   margin: "10px 0",
-                  borderRadius: "2px"
+                  borderRadius: "2px",
                 }}
               >
                 <ListItemText
@@ -70,7 +66,7 @@ const Calendar = () => {
                       {formatDate(event.start, {
                         year: "numeric",
                         month: "short",
-                        day: "numeric"
+                        day: "numeric",
                       })}
                     </Typography>
                   }
@@ -79,20 +75,21 @@ const Calendar = () => {
             ))}
           </List>
         </Box>
+
         {/* CALENDAR */}
         <Box flex="1 1 100%" ml="15px">
-          <FullCalendar 
+          <FullCalendar
             height="75vh"
             plugins={[
               dayGridPlugin,
               timeGridPlugin,
               interactionPlugin,
-              listPlugin
+              listPlugin,
             ]}
             headerToolbar={{
               left: "prev,next today",
               center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth"
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
             }}
             initialView="dayGridMonth"
             editable={true}
@@ -103,14 +100,14 @@ const Calendar = () => {
             eventClick={handleEventClick}
             eventsSet={(events) => setCurrentEvents(events)}
             initialEvents={[
-              { id: "1234", title: "All-day event", date: "2022-09-14"},
-              { id: "4321", title: "Timed event", date: "2022-09-28"},
+              { id: "1234", title: "All-day event", date: "2022-09-14" },
+              { id: "4321", title: "Timed event", date: "2022-09-28" },
             ]}
           />
         </Box>
       </Box>
     </Box>
-  )
+  );
 };
 
 export default Calendar;

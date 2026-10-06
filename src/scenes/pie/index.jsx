@@ -3,14 +3,14 @@ import Header from "../../components/Header";
 import PieChart from "../../components/PieChart";
 
 const Pie = () => {
-  return(
+  return (
     <Box m="20px">
-      < Header title="Pie Chart" subtitle="Simple Pie Chart" />
-      <Box height="75vh">
+      <Header title="Pie Chart" subtitle="Simple Pie Chart" />
+      <Box className="chart-box chart-box--h-full">
         <PieChart />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default Pie;

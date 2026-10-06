@@ -1,31 +1,23 @@
-import { Typography, Box, useTheme } from "@mui/material";
-import { tokens } from "../theme";
+import { Typography, Box } from "@mui/material";
 
 const Header = ({ title, subtitle }) => {
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-    
-    return (
-        <Box sx={{ mb: "30px" }}>
-            <Typography
-                variant="h2"
-                sx={{
-                  color: colors.grey[100],
-                  fontWeight: "bold",
-                  mb: "5px", 
-                }}  
-            >
-                {title}
-            </Typography>
-            <Typography 
-              variant="h5" 
-              sx={{ color: colors.greenAccent[400] }}
-            >
-                {subtitle}
-            </Typography>
-            
-        </Box>
-    )
-}
+  return (
+    <Box sx={{ mb: "30px" }}>
+      <Typography
+        variant="h2"
+        sx={{
+          color: "var(--grey-100)",
+          fontWeight: "bold",
+          mb: "5px",
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography variant="h5" sx={{ color: "var(--green-accent-400)" }}>
+        {subtitle}
+      </Typography>
+    </Box>
+  );
+};
 
 export default Header;

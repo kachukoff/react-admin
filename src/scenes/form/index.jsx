@@ -4,7 +4,6 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
-
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -34,7 +33,7 @@ const Form = () => {
 
   const handleFormSubmit = (values) => {
     console.log(values);
-  }
+  };
 
   return (
     <Box m="20px">
@@ -70,8 +69,8 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.firstName}
                 name="firstName"
-                error={touched.firstName && errors.firstName}
-                helperText={!!touched.firstName && !!errors.firstName}
+                error={touched.firstName && Boolean(errors.firstName)}
+                helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -83,8 +82,8 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.lastName}
                 name="lastName"
-                error={touched.lastName && errors.lastName}
-                helperText={!!touched.lastName && !!errors.lastName}
+                error={touched.lastName && Boolean(errors.lastName)}
+                helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -96,8 +95,8 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.email}
                 name="email"
-                error={touched.email && errors.email}
-                helperText={!!touched.email && !!errors.email}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
@@ -109,8 +108,8 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.contact}
                 name="contact"
-                error={touched.contact && errors.contact}
-                helperText={!!touched.contact && !!errors.contact}
+                error={touched.contact && Boolean(errors.contact)}
+                helperText={touched.contact && errors.contact}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
@@ -122,8 +121,8 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.address1}
                 name="address1"
-                error={touched.address1 && errors.address1}
-                helperText={!!touched.address1 && !!errors.address1}
+                error={touched.address1 && Boolean(errors.address1)}
+                helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
@@ -135,22 +134,35 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.address2}
                 name="address2"
-                error={touched.address2 && errors.address2}
-                helperText={!!touched.address2 && !!errors.address2}
+                error={touched.address2 && Boolean(errors.address2)}
+                helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 4" }}
               />
-              
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation
+                sx={{
+                  backgroundColor: "var(--accent) !important",
+                  color: "var(--text-on-accent) !important",
+                  fontWeight: 600,
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                  "&:hover": {
+                    backgroundColor: "var(--accent-hover) !important",
+                  },
+                }}
+              >
                 Create New User
               </Button>
             </Box>
           </form>
-        )
-        }
+        )}
       </Formik>
-    </Box>)
-}
+    </Box>
+  );
+};
 
 export default Form;

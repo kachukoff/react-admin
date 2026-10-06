@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import {
+  Box,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
-// Импорт иконок
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -17,7 +25,6 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
-// Ссылки на компоненты иконок
 const menuData = [
   {
     section: "Data",
@@ -47,17 +54,11 @@ const menuData = [
   },
 ];
 
-const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../../assets/user.png" } }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+const Sidebar = ({
+  user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../../assets/user.png" },
+}) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-
   const drawerWidth = isCollapsed ? 80 : 280;
-
-  const sidebarTransition = theme.transitions.create(["width", "opacity", "height", "transform"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  });
 
   return (
     <Drawer
@@ -66,38 +67,62 @@ const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        transition: sidebarTransition, 
+        transition: "width 0.2s ease-in-out",
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          backgroundColor: colors.primary[400],
+          backgroundColor: "var(--primary-400)",
           borderRight: "none",
-          transition: sidebarTransition,
           overflowX: "hidden",
+          transition: "width 0.2s ease-in-out",
         },
       }}
     >
       {/* Кнопка сворачивания */}
-      <Box sx={{ display: "flex", justifyContent: isCollapsed ? "center" : "flex-end", p: 1 }}>
-        <IconButton onClick={() => setIsCollapsed(!isCollapsed)} sx={{ color: colors.grey[100] }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: isCollapsed ? "center" : "flex-end",
+          p: 1,
+        }}
+      >
+        <IconButton
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          sx={{ color: "var(--grey-100)" }}
+        >
           <MenuOutlinedIcon />
         </IconButton>
       </Box>
 
       {/* Профиль */}
       {!isCollapsed && (
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mb: 3,
+          }}
+        >
           <Box
             component="img"
             alt="profile-user"
             src={user.avatar}
-            sx={{ width: 100, height: 100, cursor: "pointer", borderRadius: "50%" }}
+            sx={{
+              width: 100,
+              height: 100,
+              cursor: "pointer",
+              borderRadius: "50%",
+            }}
           />
           <Box sx={{ mt: "10px", textAlign: "center" }}>
-            <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
+            <Typography
+              variant="h2"
+              sx={{ color: "var(--grey-100)", fontWeight: "bold" }}
+            >
               {user.name}
             </Typography>
-            <Typography variant="h5" color={colors.greenAccent[500]}>
+            <Typography variant="h5" sx={{ color: "var(--green-accent-500)" }}>
               {user.role}
             </Typography>
           </Box>
@@ -109,7 +134,10 @@ const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../
         {menuData.map((section) => (
           <Box key={section.section}>
             {!isCollapsed && (
-              <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
+              <Typography
+                variant="h6"
+                sx={{ m: "15px 0 5px 20px", color: "var(--grey-300)" }}
+              >
                 {section.section}
               </Typography>
             )}
@@ -117,7 +145,11 @@ const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../
               const ItemIcon = item.icon;
 
               return (
-                <ListItem key={item.title} disablePadding sx={{ display: "block" }}>
+                <ListItem
+                  key={item.title}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
                   <ListItemButton
                     component={NavLink}
                     to={item.path}
@@ -125,14 +157,14 @@ const Sidebar = ({ user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../
                       minHeight: 48,
                       justifyContent: isCollapsed ? "center" : "flex-start",
                       px: isCollapsed ? 0 : 2.5,
-                      color: colors.grey[100],
+                      color: "var(--grey-100)",
                       transition: "all 0.2s ease",
                       "&.active": {
-                        color: colors.blueAccent[500],
-                        backgroundColor: `${colors.primary[500]} !important`,
+                        color: "var(--blue-accent-500)",
+                        backgroundColor: "var(--primary-500) !important",
                       },
                       "&:hover": {
-                        backgroundColor: `${colors.blueAccent[600]} !important`,
+                        backgroundColor: "var(--blue-accent-600) !important",
                         color: "#ffffff",
                       },
                     }}

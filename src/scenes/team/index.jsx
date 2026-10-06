@@ -1,6 +1,5 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
+import { Box, Typography } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
@@ -8,9 +7,6 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 
 const Team = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-
   const columns = [
     { field: "id", headerName: "ID" },
     {
@@ -44,17 +40,17 @@ const Team = () => {
       renderCell: ({ row: { access } }) => {
         const accessConfig = {
           admin: {
-            bg: colors.greenAccent[600],
+            bg: "var(--green-accent-600)",
             icon: <AdminPanelSettingsOutlinedIcon />,
             label: "Admin",
           },
           manager: {
-            bg: colors.greenAccent[700],
+            bg: "var(--green-accent-700)",
             icon: <SecurityOutlinedIcon />,
             label: "Manager",
           },
           user: {
-            bg: colors.greenAccent[700],
+            bg: "var(--green-accent-700)",
             icon: <LockOpenOutlinedIcon />,
             label: "User",
           },
@@ -74,7 +70,7 @@ const Team = () => {
             borderRadius="4px"
           >
             {config.icon}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            <Typography sx={{ ml: "5px", color: "var(--grey-100)" }}>
               {config.label}
             </Typography>
           </Box>
@@ -87,33 +83,8 @@ const Team = () => {
     <Box m="20px">
       <Header title="TEAM" subtitle="Managing the Team Members" />
       <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": { border: "none" },
-          "& .MuiDataGrid-cell": { borderBottom: "none" },
-          "& .name-column--cell": { color: colors.greenAccent[300] },
-          "& .MuiDataGrid-cell:focus, & .MuiDataGrid-cell:focus-within": {
-            outline: "none !important",
-          },
-          "& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within": {
-            outline: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
+        className="data-grid-box"
+        sx={{ mt: "40px", height: "75vh" }}
       >
         <DataGrid
           rows={mockDataTeam}
@@ -121,6 +92,7 @@ const Team = () => {
           pageSize={10}
           rowsPerPageOptions={[5, 10, 20]}
           checkboxSelection
+          components={{ Toolbar: GridToolbar }}
         />
       </Box>
     </Box>
