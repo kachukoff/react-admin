@@ -1,5 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 import { mockPieData as data } from "../data/mockData";
+import { useTranslation } from "react-i18next";
 
 const PieChart = () => {
   return (

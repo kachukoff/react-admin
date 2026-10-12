@@ -5,7 +5,7 @@ import BarChart from "../../components/BarChart";
 const Bar = () => {
   return (
     <Box m="20px">
-      <Header title="Bar Chart" subtitle="Simple Bar Chart" />
+      <Header title="charts.bar" subtitle="charts.bar_simple" />
       <Box className="chart-box chart-box--h-full">
         <BarChart />
       </Box>

@@ -1,40 +1,26 @@
 import { Box, Typography } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar, ruRU, enUS } from "@mui/x-data-grid";
 import { mockDataTeam } from "../../data/mockData";
+import { useTranslation } from "react-i18next";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 
 const Team = () => {
+  const { t, i18n } = useTranslation();
+
+  const localeText = i18n.language === "ru"
+    ? ruRU.components.MuiDataGrid.defaultProps.localeText
+    : enUS.components.MuiDataGrid.defaultProps.localeText;
+  
   const columns = [
-    { field: "id", headerName: "ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "access",
-      headerName: "Access Level",
+    { field: "id", headerName: t("fields.id") },
+    { field: "name", headerName: t("fields.name"), flex: 1, cellClassName: "name-column--cell" },
+    { field: "age", headerName: t("fields.age"), type: "number", headerAlign: "left", align: "left" },
+    { field: "phone", headerName: t("fields.phone"), flex: 1 },
+    { field: "email", headerName: t("fields.email"), flex: 1 },
+    { field: "access", headerName: t("fields.access_level"),
       flex: 1,
       headerAlign: "left",
       renderCell: ({ row: { access } }) => {
@@ -42,17 +28,17 @@ const Team = () => {
           admin: {
             bg: "var(--green-accent-600)",
             icon: <AdminPanelSettingsOutlinedIcon />,
-            label: "Admin",
+            label: t("roles.admin"),
           },
           manager: {
             bg: "var(--green-accent-700)",
             icon: <SecurityOutlinedIcon />,
-            label: "Manager",
+            label: t("roles.manager"),
           },
           user: {
             bg: "var(--green-accent-700)",
             icon: <LockOpenOutlinedIcon />,
-            label: "User",
+            label: t("roles.user"),
           },
         };
 
@@ -81,18 +67,20 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="team.title" subtitle="team.subtitle" />
       <Box
         className="data-grid-box"
         sx={{ mt: "40px", height: "75vh" }}
       >
         <DataGrid
+          key={i18n.language}
           rows={mockDataTeam}
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[5, 10, 20]}
           checkboxSelection
           components={{ Toolbar: GridToolbar }}
+          localeText={localeText}
         />
       </Box>
     </Box>

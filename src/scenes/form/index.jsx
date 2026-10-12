@@ -1,5 +1,6 @@
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
@@ -16,32 +17,37 @@ const initialValues = {
 const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
-const userSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  contact: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
-});
+const userSchema = (t) =>
+  yup.object().shape({
+    firstName: yup.string().required(t("validation.required")),
+    lastName: yup.string().required(t("validation.required")),
+    email: yup
+      .string()
+      .email(t("validation.email"))
+      .required(t("validation.required")),
+    contact: yup
+      .string()
+      .matches(phoneRegExp, t("validation.phone"))
+      .required(t("validation.required")),
+    address1: yup.string().required(t("validation.required")),
+    address2: yup.string().required(t("validation.required")),
+  });
 
 const Form = () => {
+  const { t } = useTranslation();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-
+  
   const handleFormSubmit = (values) => {
     console.log(values);
   };
 
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Header title="user.create_title" subtitle="user.create_subtitle" />
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
-        validationSchema={userSchema}
+        validationSchema={userSchema(t)}
       >
         {({
           values,
@@ -64,7 +70,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
+                label={t("fields.first_name")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
@@ -77,7 +83,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Last Name"
+                label={t("fields.last_name")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.lastName}
@@ -90,7 +96,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Email"
+                label={t("fields.email")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -103,7 +109,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Number"
+                label={t("fields.contact_number")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
@@ -116,7 +122,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 1"
+                label={t("fields.address1")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address1}
@@ -129,7 +135,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label={t("fields.address2")}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -155,7 +161,7 @@ const Form = () => {
                   },
                 }}
               >
-                Create New User
+                {t("user.create_button")}
               </Button>
             </Box>
           </form>

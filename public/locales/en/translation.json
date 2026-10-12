@@ -1,0 +1,125 @@
+{
+  "navigation": {
+    "search": "Search",
+    "dashboard": "Dashboard",
+    "manage_team": "Manage Team",
+    "contacts_information": "Contacts Information",
+    "invoices_balances": "Invoices Balances",
+    "profile_form": "Profile Form",
+    "calendar": "Calendar",
+    "faq_page": "FAQ Page",
+    "download_reports": "Download Reports"
+  },
+  "sections": {
+    "data": "Data",
+    "pages": "Pages",
+    "charts": "Charts"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome to your dashboard",
+    "revenue_generated": "Revenue Generated",
+    "revenue_amount": "{{amount}} revenue generated",
+    "recent_transactions": "Recent Transactions",
+    "campaign": "Campaign",
+    "sales_quantity": "Sales Quantity",
+    "geography_traffic": "Geography Based Traffic",
+    "emails_sent": "Emails Sent",
+    "sales_obtained": "Sales Obtained",
+    "new_clients": "New Clients",
+    "traffic_received": "Traffic Received",
+    "misc_expenditures": "Includes extra misc expenditures and costs"
+  },
+  "team": {
+    "title": "Team",
+    "subtitle": "Managing the Team Members"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "List of Contacts for Future Reference"
+  },
+  "invoices": {
+    "title": "Invoices",
+    "subtitle": "List of Invoices Balances"
+  },
+  "user": {
+    "create_title": "Create User",
+    "create_subtitle": "Create a New User Profile",
+    "create_button": "Create New User",
+    "vp_role": "VP Fancy Admin"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "subtitle": "Full Calendar Interactive Page",
+    "events_sidebar": "Events",
+    "prompt_title": "Please enter a new title for your event",
+    "confirm_delete": "Are you sure you want to delete the event '{{title}}'?",
+    "events": {
+      "team_meeting": "Team Meeting",
+      "project_kickoff": "Project Kickoff",
+      "client_call": "Client Call",
+      "code_review": "Code Review",
+      "release_day": "Release Day",
+      "training": "Training Session",
+      "sprint_planning": "Sprint Planning",
+      "one_on_one": "One-on-One Meeting"
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Frequently Asked Questions Page",
+    "q1": "An Important Question",
+    "q2": "Another Important Question",
+    "q3": "Your Favorite Question",
+    "q4": "Some Random Question",
+    "q5": "The Final Question",
+    "a_q1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae sequi tempora eum exercitationem odio mollitia repellat tenetur quis soluta vel consequuntur laboriosam maxime debitis reiciendis sunt qui, aliquam maiores.",
+    "a_q2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae sequi tempora eum exercitationem odio mollitia repellat tenetur quis soluta vel consequuntur laboriosam maxime debitis reiciendis sunt qui, aliquam maiores.",
+    "a_q3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae sequi tempora eum exercitationem odio mollitia repellat tenetur quis soluta vel consequuntur laboriosam maxime debitis reiciendis sunt qui, aliquam maiores.",
+    "a_q4": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae sequi tempora eum exercitationem odio mollitia repellat tenetur quis soluta vel consequuntur laboriosam maxime debitis reiciendis sunt qui, aliquam maiores.",
+    "a_q5": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste beatae sequi tempora eum exercitationem odio mollitia repellat tenetur quis soluta vel consequuntur laboriosam maxime debitis reiciendis sunt qui, aliquam maiores."
+  },
+  "charts": {
+    "bar": "Bar Chart",
+    "bar_simple": "Simple Bar Chart",
+    "pie": "Pie Chart",
+    "pie_simple": "Simple Pie Chart",
+    "line": "Line Chart",
+    "line_simple": "Simple Line Chart",
+    "geography": "Geography Chart",
+    "geography_simple": "Simple Geography Chart",
+    "axis_country": "Country",
+    "axis_food": "Food",
+    "axis_transportation": "Transportation",
+    "axis_count": "Count"
+  },
+  "fields": {
+    "id": "ID",
+    "registrar_id": "Registrar ID",
+    "name": "Name",
+    "age": "Age",
+    "phone": "Phone Number",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "zip_code": "Zip Code",
+    "access_level": "Access Level",
+    "cost": "Cost",
+    "date": "Date",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "contact_number": "Contact Number",
+    "address1": "Address 1",
+    "address2": "Address 2"
+  },
+  "roles": {
+    "admin": "Admin",
+    "manager": "Manager",
+    "user": "User"
+  },
+  "validation": {
+    "required": "required",
+    "email": "invalid email",
+    "phone": "Phone number is not valid"
+  }
+}

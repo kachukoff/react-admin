@@ -1,4 +1,5 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -13,11 +14,13 @@ import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
+  
   return (
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title="dashboard.title" subtitle="dashboard.subtitle" />
 
         <Box>
           <Button
@@ -31,7 +34,7 @@ const Dashboard = () => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            {t("navigation.download_reports")}
           </Button>
         </Box>
       </Box>
@@ -54,7 +57,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="12,361"
-            subtitle="Emails Sent"
+            subtitle={t("dashboard.emails_sent")}
             progress="0.75"
             increase="+14%"
             icon={
@@ -74,7 +77,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="431,225"
-            subtitle="Sails Obtained"
+            subtitle={t("dashboard.sales_obtained")}
             progress="0.50"
             increase="+21%"
             icon={
@@ -94,7 +97,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="32,441"
-            subtitle="New Clients"
+            subtitle={t("dashboard.new_clients")}
             progress="0.30"
             increase="+5%"
             icon={
@@ -114,7 +117,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="1,325,134"
-            subtitle="Traffic Received"
+            subtitle={t("dashboard.traffic_received")}
             progress="0.80"
             increase="+43%"
             icon={
@@ -144,7 +147,7 @@ const Dashboard = () => {
                 fontWeight="600"
                 sx={{ color: "var(--grey-100)" }}
               >
-                Revenue Generated
+                {t("dashboard.revenue_generated")}
               </Typography>
               <Typography
                 variant="h3"
@@ -181,7 +184,7 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography sx={{ color: "var(--grey-100)" }} variant="h5" fontWeight="600">
-              Recent Transactions
+              {t("dashboard.recent_transactions")}
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
@@ -225,7 +228,7 @@ const Dashboard = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600" sx={{ color: "var(--grey-100)" }}>
-            Campaign
+            {t("dashboard.campaign")}
           </Typography>
           <Box
             display="flex"
@@ -238,10 +241,10 @@ const Dashboard = () => {
               variant="h5"
               sx={{ mt: "15px", color: "var(--green-accent-500)" }}
             >
-              $48,352 revenue generated
+              {t("dashboard.revenue_amount", {amount: '$48,352'})}
             </Typography>
             <Typography sx={{ color: "var(--grey-300)" }}>
-              Includes extra misc expenditures and costs
+              {t("dashboard.misc_expenditures")}
             </Typography>
           </Box>
         </Box>
@@ -255,7 +258,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px", color: "var(--grey-100)" }}
           >
-            Sales Quantity
+            {t("dashboard.sales_quantity")}
           </Typography>
           <Box className="chart-box chart-box--h250 chart-box--pull-up">
             <BarChart isDashboard={true} />
@@ -272,7 +275,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ marginBottom: "15px", color: "var(--grey-100)" }}
           >
-            Geography Based Traffic
+            {t("dashboard.geography_traffic")}
           </Typography>
           <Box className="chart-box chart-box--h200">
             <GeographyChart isDashboard={true} />

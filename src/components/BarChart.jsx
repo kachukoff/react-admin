@@ -1,7 +1,10 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { mockBarData as data } from "../data/mockData";
+import { useTranslation } from "react-i18next";
 
 const BarChart = ({ isDashboard = false }) => {
+  const { t } = useTranslation();
+  
   return (
     <ResponsiveBar
       data={data}
@@ -51,7 +54,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "country",
+        legend: isDashboard ? undefined : t("charts.axis_country"),
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -59,7 +62,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food",
+        legend: isDashboard ? undefined : t("charts.axis_food"),
         legendPosition: "middle",
         legendOffset: -40,
       }}

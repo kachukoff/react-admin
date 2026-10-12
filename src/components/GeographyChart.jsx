@@ -1,6 +1,7 @@
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoFeatures } from "../data/mockGeoFeatures";
 import { mockGeographyData as data } from "../data/mockData";
+import { useTranslation } from "react-i18next";
 
 const GeographyChart = ({ isDashboard = false }) => {
   return (

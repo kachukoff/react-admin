@@ -11,6 +11,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -27,36 +28,37 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 const menuData = [
   {
-    section: "Data",
+    section: "sections.data",
     items: [
-      { title: "Dashboard", path: "/", icon: HomeOutlinedIcon },
-      { title: "Manage Team", path: "/team", icon: PeopleOutlinedIcon },
-      { title: "Contacts Information", path: "/contacts", icon: ContactsOutlinedIcon },
-      { title: "Invoices Balances", path: "/invoices", icon: ReceiptOutlinedIcon },
+      { title: "navigation.dashboard", path: "/", icon: HomeOutlinedIcon },
+      { title: "navigation.manage_team", path: "/team", icon: PeopleOutlinedIcon },
+      { title: "navigation.contacts_information", path: "/contacts", icon: ContactsOutlinedIcon },
+      { title: "navigation.invoices_balances", path: "/invoices", icon: ReceiptOutlinedIcon },
     ],
   },
   {
-    section: "Pages",
+    section: "sections.pages",
     items: [
-      { title: "Profile Form", path: "/form", icon: PersonOutlinedIcon },
-      { title: "Calendar", path: "/calendar", icon: CalendarTodayOutlinedIcon },
-      { title: "FAQ Page", path: "/faq", icon: HelpOutlineOutlinedIcon },
+      { title: "navigation.profile_form", path: "/form", icon: PersonOutlinedIcon },
+      { title: "navigation.calendar", path: "/calendar", icon: CalendarTodayOutlinedIcon },
+      { title: "navigation.faq_page", path: "/faq", icon: HelpOutlineOutlinedIcon },
     ],
   },
   {
-    section: "Charts",
+    section: "sections.charts",
     items: [
-      { title: "Bar Chart", path: "/bar", icon: BarChartOutlinedIcon },
-      { title: "Pie Chart", path: "/pie", icon: PieChartOutlineOutlinedIcon },
-      { title: "Line Chart", path: "/line", icon: TimelineOutlinedIcon },
-      { title: "Geography Chart", path: "/geography", icon: MapOutlinedIcon },
+      { title: "charts.bar", path: "/bar", icon: BarChartOutlinedIcon },
+      { title: "charts.pie", path: "/pie", icon: PieChartOutlineOutlinedIcon },
+      { title: "charts.line", path: "/line", icon: TimelineOutlinedIcon },
+      { title: "charts.geography", path: "/geography", icon: MapOutlinedIcon },
     ],
   },
 ];
 
 const Sidebar = ({
-  user = { name: "Ed Roh", role: "VP Fancy Admin", avatar: "../../assets/user.png" },
+  user = { name: "Ed Roh", role: "user.vp_role", avatar: "../../assets/user.png" },
 }) => {
+  const { t } = useTranslation();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const drawerWidth = isCollapsed ? 80 : 280;
 
@@ -123,7 +125,7 @@ const Sidebar = ({
               {user.name}
             </Typography>
             <Typography variant="h5" sx={{ color: "var(--green-accent-500)" }}>
-              {user.role}
+              {t(user.role)}
             </Typography>
           </Box>
         </Box>
@@ -138,7 +140,7 @@ const Sidebar = ({
                 variant="h6"
                 sx={{ m: "15px 0 5px 20px", color: "var(--grey-300)" }}
               >
-                {section.section}
+                {t(section.section)}
               </Typography>
             )}
             {section.items.map((item) => {
@@ -184,7 +186,7 @@ const Sidebar = ({
 
                     {!isCollapsed && (
                       <ListItemText
-                        primary={item.title}
+                        primary={t(item.title)}
                         sx={{ opacity: isCollapsed ? 0 : 1 }}
                       />
                     )}

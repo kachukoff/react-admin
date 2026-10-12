@@ -1,5 +1,6 @@
 import { Box, IconButton, InputBase } from "@mui/material";
 import { useTheme } from "../../theme/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -10,30 +11,22 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const Topbar = () => {
   const { mode, toggle } = useTheme();
+  const { i18n, t } = useTranslation();
+
+  const currentLang = i18n.resolvedLanguage || "ru";
+  const nextLang = currentLang === "ru" ? "en" : "ru";
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(nextLang);
+  };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        p: 2,
-        gap: 2,
-      }}
-    >
+    <Box className="topbar">
       {/* СТРОКА ПОИСКА */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "var(--primary-400)",
-          borderRadius: "3px",
-          minWidth: 240,
-        }}
-      >
+      <Box className="topbar__search">
         <InputBase
           sx={{ ml: 2, flex: 1, color: "var(--text-primary)" }}
-          placeholder="Search"
+          placeholder={t("Search")}
         />
         <IconButton type="button" sx={{ p: 1, color: "var(--text-primary)" }}>
           <SearchIcon />
@@ -42,6 +35,26 @@ const Topbar = () => {
 
       {/* ИКОНКИ */}
       <Box sx={{ display: "flex" }}>
+        <IconButton
+          onClick={toggleLanguage}
+          title={`Switch to ${nextLang.toUpperCase()}`}
+          sx={{
+            color: "var(--text-primary)",
+            fontWeight: 700,
+            fontSize: "13px",
+            minWidth: 40,
+            border: "1px solid var(--border)",
+            borderRadius: "6px",
+            px: 1, 
+            py: 0.5,
+            "&:hover": {
+              borderColor: "var(--accent)",
+              backgroundColor: "color-mix(in srgb, var(--accent) 10%, transparent)",
+            },
+          }}
+        >
+          {currentLang.toUpperCase()}
+        </IconButton>
         <IconButton onClick={toggle} sx={{ color: "var(--text-primary)" }}>
           {mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
         </IconButton>
@@ -55,7 +68,7 @@ const Topbar = () => {
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
